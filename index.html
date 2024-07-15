@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guessing Block</title>
+    <title>Guessing Game</title>
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <style>
         body {
-            background-color: #000;
-            font-family: Arial, sans-serif;
-            color: #0F0;
+            background-color: #121212;
+            font-family: 'Roboto', sans-serif;
+            color: #ffffff;
             text-align: center;
             padding: 50px;
+            margin: 0;
             overflow: hidden;
         }
         .container {
@@ -19,28 +20,59 @@
             max-width: 400px;
             margin: 0 auto;
             padding: 20px;
-            background: rgb(121, 195, 68);
-            color: black;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
             z-index: 1;
         }
         input, button {
             padding: 10px;
-            margin: 5px;
+            margin: 10px 0;
             width: calc(100% - 24px);
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            font-size: 16px;
+        }
+        input {
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+        }
+        button {
+            background: #1E90FF;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #63B8FF;
         }
         #disconnectButton {
             position: absolute;
             top: 10px;
             right: 10px;
             padding: 5px 10px;
-            background: rgb(144, 22, 22);
+            background: #FF4500;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-size: 12px;
+            z-index: 2;
+            transition: background 0.3s ease;
+        }
+        #disconnectButton:hover {
+            background: #FF6347;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 14px;
+            margin: 10px 0;
         }
         canvas {
             position: absolute;
@@ -54,7 +86,7 @@
     <canvas id="matrixCanvas"></canvas>
     <button id="disconnectButton" style="display:none;">Disconnect</button>
     <div class="container">
-        <h1>Guessing Block</h1>
+        <h1>Guessing Game</h1>
         <button id="connectButton">Connect Wallet</button>
         <div id="walletInfo" style="display:none;">
             <p>Connected Account: <span id="account"></span></p>
